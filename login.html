@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h2>Login</h2>
+    <form action="{{ url_for('login') }}" method="POST">
+        <label>Username:</label>
+        <input type="text" name="username" required>
+
+        <label>Click on Your Password Location:</label>
+        <div class="image-container">
+            <img id="auth-image" src="{{ url_for('static', filename='images/auth_image.jpg') }}" onclick="captureClick(event)">
+        </div>
+        
+        <input type="hidden" name="image_name" value="auth_image.jpg">
+        <input type="hidden" name="x_coordinate" id="x_coordinate">
+        <input type="hidden" name="y_coordinate" id="y_coordinate">
+
+        <button type="submit">Login</button>
+    </form>
+
+    <script>
+        function captureClick(event) {
+            var img = document.getElementById("auth-image");
+            var rect = img.getBoundingClientRect();
+            var x = event.clientX - rect.left;
+            var y = event.clientY - rect.top;
+
+            document.getElementById("x_coordinate").value = Math.floor(x / (rect.width / 25));
+            document.getElementById("y_coordinate").value = Math.floor(y / (rect.height / 25));
+
+            alert("Click Registered: (" + document.getElementById("x_coordinate").value + ", " + document.getElementById("y_coordinate").value + ")");
+        }
+    </script>
+</body>
+</html>
