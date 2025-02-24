@@ -1,0 +1,21 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.image-container img {
+    width: 500px;
+    height: 500px;
+    border: 2px solid #000;
+    cursor: crosshair;
+}
+
+form {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+input, button {
+    display: block;
+    margin: 10px auto;
+}
